@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
       message += "Obrigado!";
 
       // Atualize com o número desejado (incluindo código do país e DDD)
-      const phoneNumber = "5581999999999";
+      const phoneNumber = "5583987922753";
       const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
 
       // Abre a URL do WhatsApp em nova aba
