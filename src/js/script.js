@@ -9,25 +9,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const products = [
     {
       id: 1,
-      name: "Camiseta Estilosa",
-      price: 29.9,
+      name: "Arte 1",
+      price: 10.9,
       image: "./src/imagem/produto1.jpg"
     },
     {
       id: 2,
-      name: "Calça Jeans",
-      price: 29.9,
+      name: "Arte 2",
+      price: 15.9,
       image: "./src/imagem/produto2.jpg"
     },
     {
       id: 3,
-      name: "Tênis Confortável",
-      price: 29.9,
+      name: "Arte 3",
+      price: 21.9,
       image: "./src/imagem/produto3.jpg"
     },
     {
       id: 4,
-      name: "Relógio Moderno",
+      name: "Arte 4",
       price: 29.9,
       image: "./src/imagem/produto4.jpg"
     }
