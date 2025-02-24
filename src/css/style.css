@@ -12,7 +12,7 @@ body {
   margin: 0 auto;
 }
 
-/* Estilos para o cabeçalho */
+/* Cabeçalho */
 .header {
   background: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -26,7 +26,7 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  position: relative; /* Necessário para posicionar o botão hamburger */
+  position: relative;
 }
 
 .logo {
@@ -35,7 +35,6 @@ body {
   text-decoration: none;
 }
 
-/* Botão Hamburger (oculto em telas maiores) */
 .nav-toggle {
   display: none;
   background: transparent;
@@ -44,7 +43,6 @@ body {
   cursor: pointer;
 }
 
-/* Menu de navegação padrão */
 .nav-menu {
   list-style: none;
   display: flex;
@@ -59,7 +57,6 @@ body {
   position: relative;
 }
 
-/* Contador do carrinho */
 #cart-count {
   background: #e74c3c;
   color: #fff;
@@ -71,11 +68,8 @@ body {
   right: -10px;
 }
 
-/* =========================================== */
-/* Responsividade para dispositivos menores    */
-/* =========================================== */
+/* Responsividade */
 @media (max-width: 768px) {
-  /* Exibe o botão hamburger e reposiciona para o canto superior direito */
   .nav-toggle {
     display: block;
     position: absolute;
@@ -83,8 +77,6 @@ body {
     top: 50%;
     transform: translateY(-50%);
   }
-
-  /* Esconde o menu por padrão */
   .nav-menu {
     display: none;
     flex-direction: column;
@@ -96,12 +88,9 @@ body {
     left: 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
-
-  /* Quando o menu estiver ativo, exibe-o */
   .nav-menu.active {
     display: flex;
   }
-
   .nav-menu li {
     margin: 10px 0;
     text-align: center;
@@ -110,34 +99,39 @@ body {
 
 /* Seção Hero */
 .hero {
-  /* background: url("/src/imagem/hero-bg.jpg") no-repeat center center / cover; */
   padding: 60px 0;
   color: #fff;
 }
+
 .hero-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
 .hero-content {
   flex: 1;
   min-width: 300px;
 }
+
 .hero-title {
   color: #000000;
   font-size: 2.5rem;
   margin-bottom: 10px;
 }
+
 .hero-description {
   color: #000000;
   font-size: 1.2rem;
   margin-bottom: 20px;
 }
+
 .hero-image {
   flex: 1;
   min-width: 300px;
 }
+
 .hero-image img {
   max-width: 100%;
   height: auto;
@@ -156,16 +150,24 @@ body {
   font-size: 1rem;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 .btn-primary {
   background: #4a90e2;
-  color: #000000;
+  color: #fff;
 }
+
 .btn-secondary {
   background: #333;
   color: #fff;
 }
+
 .btn:hover {
   transform: scale(1.05);
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 0.9rem;
 }
 
 /* Seção de Produtos */
@@ -173,16 +175,19 @@ body {
   padding: 40px 0;
   background: #fff;
 }
+
 .section-title {
   text-align: center;
   margin-bottom: 20px;
   font-size: 2rem;
 }
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
+
 .product-card {
   background: #f9f9f9;
   padding: 15px;
@@ -190,18 +195,22 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
+
 .product-image img {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
 }
+
 .product-info {
   margin-top: 10px;
 }
+
 .product-title {
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
+
 .product-price {
   font-size: 1rem;
   margin-bottom: 10px;
@@ -220,6 +229,7 @@ body {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 .cart-modal-content {
   background: #fff;
   margin: 10% auto;
@@ -229,6 +239,7 @@ body {
   max-width: 500px;
   position: relative;
 }
+
 .close-modal {
   position: absolute;
   top: 10px;
@@ -236,6 +247,7 @@ body {
   font-size: 1.5rem;
   cursor: pointer;
 }
+
 .cart-item {
   display: flex;
   justify-content: space-between;
@@ -244,6 +256,19 @@ body {
   padding: 5px;
   border-bottom: 1px solid #ddd;
 }
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.quantity {
+  font-size: 1rem;
+  min-width: 20px;
+  text-align: center;
+}
+
 .cart-total {
   font-size: 1.2rem;
   font-weight: bold;
@@ -259,67 +284,29 @@ body {
   text-align: center;
 }
 
-/* =================================== */
-/* Media Queries para Responsividade   */
-/* =================================== */
-
-/* Para telas com largura máxima de 768px (tablets e dispositivos intermediários) */
-@media (max-width: 768px) {
-  .hero-container {
-    flex-direction: column;
-    text-align: center;
-  }
-  .hero-content,
-  .hero-image {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  .nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .nav-menu {
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    text-align: center;
-  }
-}
-
-/* Para telas com largura máxima de 480px (smartphones) */
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 2rem;
-  }
-  .hero-description {
-    font-size: 1rem;
-  }
-  .products-grid {
-    grid-template-columns: 1fr;
-  }
-  .container {
-    width: 95%;
-  }
-}
-
-/* Botão WhatsApp - fixo na parte inferior direita */
+/* WhatsApp */
 .whatsapp-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25d366;
-    color: #fff;
-    border-radius: 50%;
-    padding: 15px;
-    font-size: 2rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-    transition: background 0.3s ease;
-    text-align: center;
-    line-height: 1;
-  }
-  
-  .whatsapp-btn:hover {
-    background: #128c7e;
-  }
-  
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  background: #128c7e;
+}
+
+/* Gradiente */
+.gradient-text {
+  background: linear-gradient(to right, #4a90e2, #e74c3c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

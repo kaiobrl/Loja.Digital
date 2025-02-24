@@ -1,67 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
+  let products = [];
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
   // Atualiza o ano no rodapé
   const currentYear = document.getElementById("current-year");
   if (currentYear) {
     currentYear.textContent = new Date().getFullYear();
   }
 
-  // Array com produtos (exemplo)
-  const products = [
-    {
-      id: 1,
-      name: "Arte 1",
-      price: 10.9,
-      image: "./src/imagem/produto1.jpg"
-    },
-    {
-      id: 2,
-      name: "Arte 2",
-      price: 15.9,
-      image: "./src/imagem/produto2.jpg"
-    },
-    {
-      id: 3,
-      name: "Arte 3",
-      price: 21.9,
-      image: "./src/imagem/produto3.jpg"
-    },
-    {
-      id: 4,
-      name: "Arte 4",
-      price: 29.9,
-      image: "./src/imagem/produto4.jpg"
-    }
-  ];
+  // Carrega produtos via fetch
+  fetch("./src/data/products.json")
+    .then(response => response.json())
+    .then(data => {
+      products = data;
+      const productsGrid = document.getElementById("products-grid");
+      products.forEach(product => {
+        const productCard = document.createElement("div");
+        productCard.classList.add("product-card");
+        productCard.innerHTML = `
+          <div class="product-image">
+            <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/250?text=Imagem+Indisponível'">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">${product.name}</h3>
+            <p class="product-price">R$ ${product.price.toFixed(2)}</p>
+            <button class="btn btn-primary add-to-cart" data-id="${product.id}">Adicionar ao Carrinho</button>
+          </div>
+        `;
+        productsGrid.appendChild(productCard);
+      });
 
-  // Renderiza os produtos na grade
-  const productsGrid = document.getElementById("products-grid");
-  products.forEach(product => {
-    const productCard = document.createElement("div");
-    productCard.classList.add("product-card");
-    productCard.innerHTML = `
-        <div class="product-image">
-          <img src="${product.image}" alt="${product.name}" loading="lazy">
-        </div>
-        <div class="product-info">
-          <h3 class="product-title">${product.name}</h3>
-          <p class="product-price">R$ ${product.price.toFixed(2)}</p>
-          <button class="btn btn-primary add-to-cart" data-id="${product.id}">Adicionar ao Carrinho</button>
-        </div>
-      `;
-    productsGrid.appendChild(productCard);
-  });
-
-  // Inicializa o carrinho (array simples)
-  let cart = [];
+      // Adiciona eventos aos botões "Adicionar ao Carrinho"
+      document.querySelectorAll(".add-to-cart").forEach(button => {
+        button.addEventListener("click", e => {
+          const productId = e.currentTarget.getAttribute("data-id");
+          addToCart(productId);
+        });
+      });
+    })
+    .catch(error => console.error("Erro ao carregar produtos:", error));
 
   // Atualiza o contador do carrinho
   const updateCartCount = () => {
     const cartCount = document.getElementById("cart-count");
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartCount.textContent = totalItems;
+    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
-  // Atualiza o modal do carrinho com os itens e total
+  // Atualiza o modal do carrinho
   const updateCartModal = () => {
     const cartItemsContainer = document.getElementById("cart-items");
     const cartTotalContainer = document.getElementById("cart-total");
@@ -72,16 +59,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const cartItem = document.createElement("div");
       cartItem.classList.add("cart-item");
       cartItem.innerHTML = `
-          <span>${item.name} (x${item.quantity}) - R$ ${(item.price *
-        item.quantity).toFixed(2)}</span>
-          <button class="btn btn-secondary btn-sm remove-from-cart" data-id="${item.id}">&times;</button>
-        `;
+        <span>${item.name} - R$ ${item.price.toFixed(2)}</span>
+        <div class="cart-item-controls">
+          <button class="btn btn-secondary btn-sm decrease-quantity" data-id="${item.id}">-</button>
+          <span class="quantity">${item.quantity}</span>
+          <button class="btn btn-secondary btn-sm increase-quantity" data-id="${item.id}">+</button>
+          <button class="btn btn-secondary btn-sm remove-from-cart" data-id="${item.id}">×</button>
+        </div>
+      `;
       cartItemsContainer.appendChild(cartItem);
     });
     cartTotalContainer.textContent = total.toFixed(2);
   };
 
-  // Função para adicionar produtos ao carrinho
+  // Adiciona ao carrinho
   const addToCart = productId => {
     const product = products.find(p => p.id === parseInt(productId));
     if (!product) return;
@@ -95,25 +86,46 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartModal();
   };
 
-  // Função para remover produtos do carrinho
+  // Incrementa quantidade
+  const increaseQuantity = productId => {
+    const cartItem = cart.find(item => item.id === parseInt(productId));
+    if (cartItem) {
+      cartItem.quantity += 1;
+      updateCartCount();
+      updateCartModal();
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  };
+
+  // Decrementa quantidade
+  const decreaseQuantity = productId => {
+    const cartItem = cart.find(item => item.id === parseInt(productId));
+    if (cartItem && cartItem.quantity > 1) {
+      cartItem.quantity -= 1;
+    } else if (cartItem && cartItem.quantity === 1) {
+      cart = cart.filter(item => item.id !== parseInt(productId));
+    }
+    updateCartCount();
+    updateCartModal();
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  // Remove do carrinho
   const removeFromCart = productId => {
     cart = cart.filter(item => item.id !== parseInt(productId));
     updateCartCount();
     updateCartModal();
+    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
-  // Adiciona eventos aos botões "Adicionar ao Carrinho"
-  document.querySelectorAll(".add-to-cart").forEach(button => {
-    button.addEventListener("click", e => {
-      const productId = e.currentTarget.getAttribute("data-id");
-      addToCart(productId);
-    });
-  });
-
-  // Delegação de evento para remover itens do carrinho
+  // Delegação de eventos no carrinho
   document.getElementById("cart-items").addEventListener("click", e => {
-    if (e.target.classList.contains("remove-from-cart")) {
-      const productId = e.target.getAttribute("data-id");
+    const productId = e.target.getAttribute("data-id");
+    if (e.target.classList.contains("increase-quantity")) {
+      increaseQuantity(productId);
+    } else if (e.target.classList.contains("decrease-quantity")) {
+      decreaseQuantity(productId);
+    } else if (e.target.classList.contains("remove-from-cart")) {
       removeFromCart(productId);
     }
   });
@@ -123,7 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartLink = document.querySelector(".cart-link");
   const closeCart = document.getElementById("close-cart");
 
-  // Exibe o modal ao clicar no ícone do carrinho
   if (cartLink) {
     cartLink.addEventListener("click", e => {
       e.preventDefault();
@@ -131,63 +142,52 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Fecha o modal ao clicar no "X"
   if (closeCart) {
     closeCart.addEventListener("click", () => {
       cartModal.style.display = "none";
     });
   }
 
-  // Finaliza a compra e envia a mensagem via WhatsApp
+  // Finaliza compra via WhatsApp
   document.getElementById("checkout-btn").addEventListener("click", () => {
     if (cart.length === 0) {
       alert("Seu carrinho está vazio!");
     } else {
-      // Composição da mensagem com os detalhes do pedido
       let message = "Olá, gostaria de finalizar minha compra:%0A";
       cart.forEach(item => {
-        message += `${item.name} (x${item.quantity}) - R$ ${(item.price *
-          item.quantity).toFixed(2)}%0A`;
+        message += `${item.name} (x${item.quantity}) - R$ ${(item.price * item.quantity).toFixed(2)}%0A`;
       });
-      let total = cart.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
-      );
+      let total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
       message += `Total: R$ ${total.toFixed(2)}%0A`;
       message += "Obrigado!";
-
-      // Atualize com o número desejado (incluindo código do país e DDD)
       const phoneNumber = "5583987922753";
       const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
-
-      // Abre a URL do WhatsApp em nova aba
       window.open(whatsappURL, "_blank");
-
-      // Limpa o carrinho e atualiza a interface
       cart = [];
       updateCartCount();
       updateCartModal();
       cartModal.style.display = "none";
-
-      // Exibe a mensagem de agradecimento na tela
       alert("Obrigado por sua compra!");
     }
   });
 
-  // Fecha o modal ao clicar fora da área de conteúdo
+  // Fecha o modal ao clicar fora
   window.addEventListener("click", e => {
     if (e.target === cartModal) {
       cartModal.style.display = "none";
     }
   });
 
-  // Toggle para o menu mobile (botão hamburger)
+  // Toggle do menu mobile
   const navToggle = document.querySelector(".nav-toggle");
   const navMenu = document.querySelector(".nav-menu");
-
   if (navToggle && navMenu) {
     navToggle.addEventListener("click", () => {
       navMenu.classList.toggle("active");
     });
   }
+
+  // Inicializa a interface
+  updateCartCount();
+  updateCartModal();
 });
