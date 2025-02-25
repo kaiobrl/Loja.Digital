@@ -100,7 +100,7 @@ body {
 /* Seção Hero */
 .hero {
   padding: 60px 0;
-  color: #fff;
+  color: #fff; /* Mantido, mas não está sendo usado diretamente */
 }
 
 .hero-container {
@@ -108,11 +108,14 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 20px; /* Adiciona espaçamento entre conteúdo e imagem */
 }
 
 .hero-content {
   flex: 1;
-  min-width: 300px;
+  min-width: 0; /* Remove o min-width fixo para maior flexibilidade */
+  max-width: 600px; /* Limita a largura máxima em telas grandes */
+  padding: 0 20px; /* Adiciona padding lateral para evitar colisão com bordas */
 }
 
 .hero-title {
@@ -129,7 +132,8 @@ body {
 
 .hero-image {
   flex: 1;
-  min-width: 300px;
+  min-width: 0; /* Remove o min-width fixo */
+  max-width: 500px; /* Limita a largura da imagem */
 }
 
 .hero-image img {
@@ -137,6 +141,49 @@ body {
   height: auto;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column; /* Empilha verticalmente em telas menores */
+    text-align: center; /* Centraliza o texto */
+  }
+
+  .hero-content {
+    padding: 0 15px; /* Reduz o padding em telas menores */
+  }
+
+  .hero-title {
+    font-size: 2rem; /* Reduz o tamanho do título */
+  }
+
+  .hero-description {
+    font-size: 1rem; /* Reduz o tamanho da descrição */
+  }
+
+  .hero-image {
+    margin-top: 20px; /* Adiciona espaço entre conteúdo e imagem */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 40px 0; /* Reduz o padding da seção */
+  }
+
+  .hero-title {
+    font-size: 1.5rem; /* Tamanho ainda menor para telas pequenas */
+  }
+
+  .hero-description {
+    font-size: 0.9rem; /* Ajusta a descrição */
+  }
+
+  .btn-primary {
+    padding: 8px 16px; /* Reduz o tamanho do botão */
+    font-size: 0.9rem;
+  }
 }
 
 /* Botões */
@@ -267,6 +314,28 @@ body {
   font-size: 1rem;
   min-width: 20px;
   text-align: center;
+}
+
+/* Notificação */
+.notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 .cart-total {

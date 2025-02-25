@@ -72,6 +72,17 @@ document.addEventListener("DOMContentLoaded", () => {
     cartTotalContainer.textContent = total.toFixed(2);
   };
 
+  // Função para exibir notificação
+  const showNotification = (message) => {
+    const notification = document.createElement("div");
+    notification.classList.add("notification");
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+      notification.remove();
+    }, 2000);
+  };
+
   // Adiciona ao carrinho
   const addToCart = productId => {
     const product = products.find(p => p.id === parseInt(productId));
@@ -84,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     updateCartCount();
     updateCartModal();
+    showNotification(`${product.name} foi adicionado ao carrinho!`);
   };
 
   // Incrementa quantidade
