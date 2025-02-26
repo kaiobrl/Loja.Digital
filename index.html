@@ -13,6 +13,17 @@
     />
     <meta name="author" content="Kaio Developer" />
     <meta name="theme-color" content="#04090d" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Dev Shop - Loja Online" />
+    <meta property="og:description" content="Encontre os melhores produtos!" />
+    <meta property="og:image" content="./src/imagem/hero-image.png" />
+    <meta property="og:url" content="https://devshop.com" />
+    <meta property="og:type" content="website" />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dev Shop - Loja Online" />
+    <meta name="twitter:description" content="Encontre os melhores produtos!" />
+    <meta name="twitter:image" content="./src/imagem/hero-image.png" />
     <title>Dev Shop - Loja Online</title>
     <link rel="stylesheet" href="./src/css/style.css" />
     <link
@@ -21,35 +32,47 @@
     />
   </head>
   <body>
-    <!-- Cabeçalho -->
-    <header class="header">
+    <!-- Header -->
+    <header class="header" role="banner">
       <div class="container">
-        <nav class="nav">
-          <a href="#" class="logo" aria-label="Dev Shop">
-            <span class="gradient-text">Formato livre</span>
+        <nav class="nav" role="navigation">
+          <a href="#" class="logo" aria-label="Dev Shop - Home">
+            <span class="gradient-text">Formato Livre</span>
           </a>
           <a
             href="https://api.whatsapp.com/send?phone=5583987922753&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20produtos!"
             class="whatsapp-btn"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="Enviar mensagem via WhatsApp"
           >
-            <i class="bx bxl-whatsapp"></i>
+            <i class="bx bxl-whatsapp" aria-hidden="true"></i>
+            <span class="whatsapp-text">WhatsApp</span>
           </a>
           <button
             type="button"
             class="nav-toggle"
             aria-label="Alternar navegação"
+            aria-expanded="false"
           >
             <i class="bx bx-menu"></i>
           </button>
-          <ul class="nav-menu">
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#produtos" class="nav-link">Produtos</a></li>
+          <ul class="nav-menu" role="menu">
+            <li><a href="#home" class="nav-link" role="menuitem">Home</a></li>
             <li>
-              <a href="#carrinho" class="nav-link cart-link">
+              <a href="#produtos" class="nav-link" role="menuitem">Produtos</a>
+            </li>
+            <li>
+              <a
+                href="#carrinho"
+                class="nav-link cart-link"
+                role="menuitem"
+                aria-label="Ver carrinho"
+              >
                 <i class="bx bx-cart"></i>
-                <span id="cart-count">0</span>
+                <span id="cart-count" aria-live="polite" class="cart-count"
+                  >0</span
+                >
               </a>
             </li>
           </ul>
@@ -57,60 +80,80 @@
       </div>
     </header>
 
-    <!-- Conteúdo Principal -->
-    <main>
-      <!-- Seção Hero -->
-      <section id="home" class="hero">
+    <!-- Main Content -->
+    <main role="main">
+      <!-- Hero Section -->
+      <section id="home" class="hero" aria-label="Bem-vindo à Dev Shop">
         <div class="container hero-container">
           <div class="hero-content">
             <h1 class="hero-title gradient-text">Bem-vindo.</h1>
             <p class="hero-description">
               Encontre os melhores produtos com preços imperdíveis!
             </p>
-            <a href="#produtos" class="btn btn-primary"
-              >Confira nossos produtos</a
+            <a
+              href="#produtos"
+              class="btn btn-primary"
+              aria-label="Confira nossos produtos"
             >
+              Confira nossos produtos
+            </a>
           </div>
           <div class="hero-image">
             <img
               src="./src/imagem/hero-image.png"
-              alt="Promoção Shop"
+              alt="Promoção na Dev Shop"
               loading="lazy"
+              onerror="this.src='https://via.placeholder.com/500?text=Imagem+Indisponível'"
             />
           </div>
         </div>
       </section>
 
-      <!-- Seção Produtos -->
-      <section id="produtos" class="products">
+      <!-- Products Section -->
+      <section id="produtos" class="products" aria-label="Lista de produtos">
         <div class="container">
           <h2 class="section-title gradient-text">Produtos</h2>
-          <div class="products-grid" id="products-grid">
+          <div class="products-grid" id="products-grid" aria-live="polite">
             <!-- Produtos inseridos via JavaScript -->
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Modal do Carrinho -->
-    <div id="cart-modal" class="cart-modal">
+    <!-- Cart Modal -->
+    <div
+      id="cart-modal"
+      class="cart-modal"
+      role="dialog"
+      aria-labelledby="cart-modal-title"
+    >
       <div class="cart-modal-content">
-        <span class="close-modal" id="close-cart">&times;</span>
-        <h2>Carrinho</h2>
-        <div id="cart-items">
+        <button
+          class="close-modal"
+          id="close-cart"
+          aria-label="Fechar carrinho"
+        >
+          &times;
+        </button>
+        <h2 id="cart-modal-title">Carrinho</h2>
+        <div id="cart-items" aria-live="polite">
           <!-- Itens do carrinho inseridos aqui -->
         </div>
         <div class="cart-total">
           Total: R$ <span id="cart-total">0.00</span>
         </div>
-        <button class="btn btn-primary" id="checkout-btn">
+        <button
+          class="btn btn-primary"
+          id="checkout-btn"
+          aria-label="Finalizar compra"
+        >
           Finalizar Compra
         </button>
       </div>
     </div>
 
-    <!-- Rodapé -->
-    <footer class="footer">
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
       <div class="container">
         <p class="copyright">
           © <span id="current-year">2024</span> Kaio Desenvolvedor Web. Todos os
@@ -119,6 +162,6 @@
       </div>
     </footer>
 
-    <script src="./src/js/script.js"></script>
+    <script src="./src/js/script.js" defer></script>
   </body>
 </html>
