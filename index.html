@@ -5,163 +5,315 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Loja Online Dev Shop - Seu destino para produtos incríveis"
+      content="Formato Livre - Sua loja de artes digitais e produtos criativos"
     />
-    <meta
-      name="keywords"
-      content="e-commerce, loja online, produtos, Dev Shop"
-    />
+    <meta name="keywords" content="arte digital, produtos criativos, loja online, Formato Livre" />
     <meta name="author" content="Kaio Developer" />
     <meta name="theme-color" content="#04090d" />
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Dev Shop - Loja Online" />
-    <meta property="og:description" content="Encontre os melhores produtos!" />
-    <meta property="og:image" content="./src/imagem/hero-image.png" />
-    <meta property="og:url" content="https://devshop.com" />
-    <meta property="og:type" content="website" />
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Dev Shop - Loja Online" />
-    <meta name="twitter:description" content="Encontre os melhores produtos!" />
-    <meta name="twitter:image" content="./src/imagem/hero-image.png" />
-    <title>Dev Shop - Loja Online</title>
+    <title>Formato Livre - Loja de Artes</title>
     <link rel="stylesheet" href="./src/css/style.css" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
     />
+    <!-- Preconectar com domínios de terceiros para melhorar o desempenho -->
+    <link rel="preconnect" href="https://unpkg.com" />
+    <!-- Adicionar favicon -->
+    <link rel="icon" href="./src/imagem/favicon.ico" type="image/x-icon" />
   </head>
   <body>
-    <!-- Header -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+    
     <header class="header" role="banner">
       <div class="container">
         <nav class="nav" role="navigation">
-          <a href="#" class="logo" aria-label="Dev Shop - Home">
+          <a href="#" class="logo" aria-label="Formato Livre - Home">
             <span class="gradient-text">Formato Livre</span>
           </a>
-          <a
-            href="https://api.whatsapp.com/send?phone=5583987922753&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20produtos!"
-            class="whatsapp-btn"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Enviar mensagem via WhatsApp"
-          >
-            <i class="bx bxl-whatsapp" aria-hidden="true"></i>
-            <span class="whatsapp-text">WhatsApp</span>
-          </a>
-          <button
-            type="button"
-            class="nav-toggle"
-            aria-label="Alternar navegação"
-            aria-expanded="false"
-          >
-            <i class="bx bx-menu"></i>
-          </button>
+          
+          <div class="search-container">
+            <input 
+              type="search" 
+              id="product-search" 
+              class="search-input" 
+              placeholder="Buscar produtos..." 
+              aria-label="Buscar produtos"
+            />
+            <button class="search-btn" aria-label="Buscar">
+              <i class="bx bx-search"></i>
+            </button>
+          </div>
+          
+          <div class="nav-controls">
+            <button
+              type="button"
+              class="theme-toggle"
+              id="theme-toggle"
+              aria-label="Alternar entre modo claro e escuro"
+              aria-pressed="false"
+            >
+              <i class="bx bx-moon" id="theme-icon"></i>
+            </button>
+            
+            <a href="#carrinho" class="nav-link cart-link" role="button" aria-label="Ver carrinho">
+              <i class="bx bx-cart"></i>
+              <span id="cart-count" aria-live="polite" class="cart-count">0</span>
+            </a>
+            
+            <button
+              type="button"
+              class="nav-toggle"
+              aria-label="Alternar navegação"
+              aria-expanded="false"
+            >
+              <i class="bx bx-menu"></i>
+            </button>
+          </div>
+          
           <ul class="nav-menu" role="menu">
             <li><a href="#home" class="nav-link" role="menuitem">Home</a></li>
-            <li>
-              <a href="#produtos" class="nav-link" role="menuitem">Produtos</a>
-            </li>
-            <li>
-              <a
-                href="#carrinho"
-                class="nav-link cart-link"
-                role="menuitem"
-                aria-label="Ver carrinho"
-              >
-                <i class="bx bx-cart"></i>
-                <span id="cart-count" aria-live="polite" class="cart-count"
-                  >0</span
-                >
-              </a>
-            </li>
+            <li><a href="#produtos" class="nav-link" role="menuitem">Produtos</a></li>
+            <li><a href="#sobre" class="nav-link" role="menuitem">Sobre</a></li>
+            <li><a href="#contato" class="nav-link" role="menuitem">Contato</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <!-- Main Content -->
-    <main role="main">
-      <!-- Hero Section -->
-      <section id="home" class="hero" aria-label="Bem-vindo à Dev Shop">
+    <main id="main-content" role="main">
+      <section id="home" class="hero" aria-label="Bem-vindo à Formato Livre">
         <div class="container hero-container">
           <div class="hero-content">
-            <h1 class="hero-title gradient-text">Bem-vindo.</h1>
+            <h1 class="hero-title gradient-text">Arte Digital ao seu Alcance</h1>
             <p class="hero-description">
-              Encontre os melhores produtos com preços imperdíveis!
+              Descubra artes únicas e produtos criativos com preços imperdíveis!
             </p>
-            <a
-              href="#produtos"
-              class="btn btn-primary"
-              aria-label="Confira nossos produtos"
-            >
-              Confira nossos produtos
-            </a>
+            <div class="hero-buttons">
+              <a href="#produtos" class="btn btn-primary" aria-label="Confira nossos produtos">
+                Ver produtos
+              </a>
+              <a href="#sobre" class="btn btn-outline" aria-label="Saiba mais sobre nós">
+                Saiba mais
+              </a>
+            </div>
           </div>
           <div class="hero-image">
             <img
               src="./src/imagem/hero-image.png"
-              alt="Promoção na Dev Shop"
+              alt="Artes digitais em destaque"
+              width="500"
+              height="400"
               loading="lazy"
-              onerror="this.src='https://via.placeholder.com/500?text=Imagem+Indisponível'"
+              onerror="this.src='https://via.placeholder.com/500x400?text=Arte+Digital'"
             />
           </div>
         </div>
       </section>
 
-      <!-- Products Section -->
       <section id="produtos" class="products" aria-label="Lista de produtos">
         <div class="container">
-          <h2 class="section-title gradient-text">Produtos</h2>
+          <div class="section-header">
+            <h2 class="section-title gradient-text">Produtos</h2>
+            <div class="filter-controls">
+              <div class="filter-group">
+                <label for="sort-select" class="sr-only">Ordenar por</label>
+                <select id="sort-select" class="filter-select" aria-label="Ordenar produtos">
+                  <option value="default">Ordenar por</option>
+                  <option value="price-asc">Preço: Menor para Maior</option>
+                  <option value="price-desc">Preço: Maior para Menor</option>
+                  <option value="name-asc">Nome: A-Z</option>
+                  <option value="name-desc">Nome: Z-A</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <div id="products-loading" class="loading-indicator">
+            <div class="spinner"></div>
+            <p>Carregando produtos...</p>
+          </div>
+          
+          <div id="products-error" class="error-message" hidden>
+            <i class="bx bx-error-circle"></i>
+            <p>Não foi possível carregar os produtos. Por favor, tente novamente.</p>
+            <button id="retry-load" class="btn btn-secondary">Tentar novamente</button>
+          </div>
+          
           <div class="products-grid" id="products-grid" aria-live="polite">
             <!-- Produtos inseridos via JavaScript -->
+          </div>
+          
+          <div id="no-results" class="no-results" hidden>
+            <p>Nenhum produto encontrado com os critérios selecionados.</p>
+          </div>
+        </div>
+      </section>
+      
+      <section id="sobre" class="about-section">
+        <div class="container">
+          <h2 class="section-title gradient-text">Sobre Nós</h2>
+          <div class="about-content">
+            <div class="about-text">
+              <p>A Formato Livre é uma loja especializada em artes digitais e produtos criativos, oferecendo peças únicas para decoração e uso pessoal.</p>
+              <p>Nossa missão é conectar artistas talentosos com pessoas que apreciam arte de qualidade a preços acessíveis.</p>
+              <p>Todos os produtos são criados com atenção aos detalhes e compromisso com a qualidade.</p>
+            </div>
+            <div class="about-image">
+              <img 
+                src="./src/imagem/about-image.jpg" 
+                alt="Nossa equipe criativa" 
+                width="400" 
+                height="300"
+                loading="lazy"
+                onerror="this.src='https://via.placeholder.com/400x300?text=Nossa+Equipe'"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="contato" class="contact-section">
+        <div class="container">
+          <h2 class="section-title gradient-text">Contato</h2>
+          <div class="contact-content">
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="bx bx-envelope"></i>
+                <p>contato@formatolivre.com</p>
+              </div>
+              <div class="contact-item">
+                <i class="bx bx-phone"></i>
+                <p>(83) 98792-2753</p>
+              </div>
+              <div class="contact-item">
+                <i class="bx bx-map"></i>
+                <p>João Pessoa, PB - Brasil</p>
+              </div>
+              <div class="social-links">
+                <a href="#" aria-label="Facebook" class="social-link"><i class="bx bxl-facebook"></i></a>
+                <a href="#" aria-label="Instagram" class="social-link"><i class="bx bxl-instagram"></i></a>
+                <a href="#" aria-label="Twitter" class="social-link"><i class="bx bxl-twitter"></i></a>
+              </div>
+            </div>
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Mensagem</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+            </form>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Cart Modal -->
-    <div
-      id="cart-modal"
-      class="cart-modal"
-      role="dialog"
-      aria-labelledby="cart-modal-title"
-    >
+    <div id="cart-modal" class="cart-modal" role="dialog" aria-labelledby="cart-modal-title" aria-hidden="true">
       <div class="cart-modal-content">
-        <button
-          class="close-modal"
-          id="close-cart"
-          aria-label="Fechar carrinho"
-        >
-          &times;
-        </button>
-        <h2 id="cart-modal-title">Carrinho</h2>
-        <div id="cart-items" aria-live="polite">
+        <div class="cart-modal-header">
+          <h2 id="cart-modal-title">Seu Carrinho</h2>
+          <button class="close-modal" id="close-cart" aria-label="Fechar carrinho">
+            <i class="bx bx-x"></i>
+          </button>
+        </div>
+        
+        <div id="cart-empty" class="cart-empty">
+          <i class="bx bx-cart"></i>
+          <p>Seu carrinho está vazio</p>
+          <a href="#produtos" class="btn btn-primary" id="continue-shopping">Continuar comprando</a>
+        </div>
+        
+        <div id="cart-items" class="cart-items" aria-live="polite">
           <!-- Itens do carrinho inseridos aqui -->
         </div>
-        <div class="cart-total">
-          Total: R$ <span id="cart-total">0.00</span>
+        
+        <div class="cart-summary">
+          <div class="cart-total">
+            <span>Total:</span>
+            <span>R$ <span id="cart-total">0.00</span></span>
+          </div>
+          <button class="btn btn-primary" id="checkout-btn" aria-label="Finalizar compra">
+            Finalizar Compra
+          </button>
+          <button class="btn btn-outline" id="clear-cart" aria-label="Limpar carrinho">
+            Limpar Carrinho
+          </button>
         </div>
-        <button
-          class="btn btn-primary"
-          id="checkout-btn"
-          aria-label="Finalizar compra"
-        >
-          Finalizar Compra
-        </button>
       </div>
     </div>
 
-    <!-- Footer -->
+    <div id="product-modal" class="product-modal" role="dialog" aria-labelledby="product-modal-title" aria-hidden="true">
+      <div class="product-modal-content">
+        <button class="close-modal" id="close-product" aria-label="Fechar detalhes do produto">
+          <i class="bx bx-x"></i>
+        </button>
+        <div id="product-details" class="product-details">
+          <!-- Detalhes do produto inseridos aqui -->
+        </div>
+      </div>
+    </div>
+
+    <!-- <a
+      href="https://api.whatsapp.com/send?phone=5583987922753&text=Olá,%20gostaria%20de%20mais%20informações%20sobre%20os%20produtos!"
+      class="whatsapp-btn"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Enviar mensagem via WhatsApp"
+    >
+      <i class="bx bxl-whatsapp" aria-hidden="true"></i>
+      <span class="whatsapp-text">WhatsApp</span>
+    </a> -->
+
     <footer class="footer" role="contentinfo">
       <div class="container">
-        <p class="copyright">
-          © <span id="current-year">2024</span> Kaio Desenvolvedor Web. Todos os
-          direitos reservados.
-        </p>
+        <div class="footer-content">
+          <div class="footer-logo">
+            <span class="gradient-text">Formato Livre</span>
+            <p>Arte digital ao seu alcance</p>
+          </div>
+          <div class="footer-links">
+            <h3>Links Rápidos</h3>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#produtos">Produtos</a></li>
+              <li><a href="#sobre">Sobre</a></li>
+              <li><a href="#contato">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-newsletter">
+            <h3>Receba Novidades</h3>
+            <form id="newsletter-form" class="newsletter-form">
+              <input 
+                type="email" 
+                placeholder="Seu email" 
+                aria-label="Seu email para newsletter" 
+                required
+              />
+              <button type="submit" class="btn btn-primary">Inscrever</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="copyright">
+            © <span id="current-year">2024</span> Formato Livre. Todos os direitos reservados.
+          </p>
+          <p class="developer">
+            Desenvolvido por <a href="#" target="_blank" rel="noopener">Kaio Developer</a>
+          </p>
+        </div>
       </div>
     </footer>
+
+    <div id="notification-container" class="notification-container" aria-live="polite"></div>
 
     <script src="./src/js/script.js" defer></script>
   </body>
 </html>
+
