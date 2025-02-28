@@ -3,49 +3,24 @@
     "id": 1,
     "name": "Arte Digital 1",
     "price": 10.9,
-    "image": "./src/imagem/produto1.jpg"
+    "image": "./src/imagem/produto1.png"
   },
   {
     "id": 2,
     "name": "Arte Digital 2",
     "price": 15.9,
-    "image": "./src/imagem/produto2.jpg"
+    "image": "./src/imagem/produto1.png"
   },
   {
     "id": 3,
     "name": "Arte Digital 3",
     "price": 21.9,
-    "image": "./src/imagem/produto3.jpg"
+    "image": "./src/imagem/produto1.png"
   },
   {
     "id": 4,
     "name": "Arte Digital 4",
     "price": 29.9,
-    "image": "./src/imagem/produto4.jpg"
-  },
-  {
-    "id": 5,
-    "name": "Arte Digital 5",
-    "price": 18.5,
-    "image": "./src/imagem/produto1.jpg"
-  },
-  {
-    "id": 6,
-    "name": "Arte Digital 6",
-    "price": 24.9,
-    "image": "./src/imagem/produto2.jpg"
-  },
-  {
-    "id": 7,
-    "name": "Arte Digital 7",
-    "price": 32.9,
-    "image": "./src/imagem/produto3.jpg"
-  },
-  {
-    "id": 8,
-    "name": "Arte Digital 8",
-    "price": 27.5,
-    "image": "./src/imagem/produto4.jpg"
+    "image": "./src/imagem/produto1.png"
   }
 ]
-
