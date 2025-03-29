@@ -9,18 +9,18 @@
     "id": 2,
     "name": "Arte Digital 2",
     "price": 15.9,
-    "image": "./src/imagem/produto1.png"
+    "image": "./src/imagem/produto2.jpg"
   },
   {
     "id": 3,
     "name": "Arte Digital 3",
     "price": 21.9,
-    "image": "./src/imagem/produto1.png"
+    "image": "./src/imagem/produto3.jpg"
   },
   {
     "id": 4,
     "name": "Arte Digital 4",
     "price": 29.9,
-    "image": "./src/imagem/produto1.png"
+    "image": "./src/imagem/produto4.jpg"
   }
 ]
