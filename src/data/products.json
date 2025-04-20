@@ -2,25 +2,25 @@
   {
     "id": 1,
     "name": "Arte Digital 1",
-    "price": 10.9,
-    "image": "./src/imagem/produto1.png"
+    "price": 9.90,
+    "image": "./src/imagem/produto1.jpeg"
   },
   {
     "id": 2,
     "name": "Arte Digital 2",
-    "price": 15.9,
-    "image": "./src/imagem/produto2.jpg"
+    "price": 19.90,
+    "image": "./src/imagem/produto2.jpeg"
   },
   {
     "id": 3,
     "name": "Arte Digital 3",
-    "price": 21.9,
-    "image": "./src/imagem/produto3.jpg"
+    "price": 29.90,
+    "image": "./src/imagem/produto3.jpeg"
   },
   {
     "id": 4,
     "name": "Arte Digital 4",
-    "price": 29.9,
-    "image": "./src/imagem/produto4.jpg"
+    "price": 39.90,
+    "image": "./src/imagem/produto4.jpeg"
   }
 ]
