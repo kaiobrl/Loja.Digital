@@ -1,26 +1,50 @@
 [
   {
     "id": 1,
-    "name": "Arte Digital 1",
+    "name": "Futuro retro",
     "price": 9.90,
     "image": "./src/imagem/produto1.jpeg"
   },
   {
     "id": 2,
-    "name": "Arte Digital 2",
+    "name": "Planeta futuro",
     "price": 19.90,
     "image": "./src/imagem/produto2.jpeg"
   },
   {
     "id": 3,
-    "name": "Arte Digital 3",
+    "name": "Cozinha do futuro",
     "price": 29.90,
     "image": "./src/imagem/produto3.jpeg"
   },
   {
     "id": 4,
-    "name": "Arte Digital 4",
+    "name": "Crie um infografico",
     "price": 39.90,
     "image": "./src/imagem/produto4.jpeg"
+  },
+  {
+    "id": 5,
+    "name": "Arte Digital 5",
+    "price": 9.90,
+    "image": "./src/imagem/produto5.jpeg"
+  },
+  {
+    "id": 6,
+    "name": "Arte Digital 6",
+    "price": 19.90,
+    "image": "./src/imagem/produto6.jpeg"
+  },
+  {
+    "id": 7,
+    "name": "Arte Digital 7",
+    "price": 29.90,
+    "image": "./src/imagem/produto7.jpeg"
+  },
+  {
+    "id": 8,
+    "name": "Digital Arte 8",
+    "price": 39.90,
+    "image": "./src/imagem/produto8.jpeg"
   }
 ]
