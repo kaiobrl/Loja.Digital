@@ -19,15 +19,11 @@
       rel="stylesheet"
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
     />
-    <!-- Preconectar com domínios de terceiros para melhorar o desempenho -->
     <link rel="preconnect" href="https://unpkg.com" />
-    <!-- Adicionar favicon -->
     <link rel="icon" href="./src/imagem/favicon.ico" type="image/x-icon" />
   </head>
   <body>
-    <a href="#main-content" class="skip-link"
-      >Pular para o conteúdo principal</a
-    >
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
     <header class="header" role="banner">
       <div class="container">
@@ -35,7 +31,6 @@
           <a href="#" class="logo" aria-label="Formato Livre - Home">
             <span class="gradient-text">Formato Livre</span>
           </a>
-
           <div class="search-container">
             <input
               type="search"
@@ -48,7 +43,6 @@
               <i class="bx bx-search"></i>
             </button>
           </div>
-
           <div class="nav-controls">
             <button
               type="button"
@@ -59,7 +53,6 @@
             >
               <i class="bx bx-moon" id="theme-icon"></i>
             </button>
-
             <a
               href="#carrinho"
               class="nav-link cart-link"
@@ -67,11 +60,8 @@
               aria-label="Ver carrinho"
             >
               <i class="bx bx-cart"></i>
-              <span id="cart-count" aria-live="polite" class="cart-count"
-                >0</span
-              >
+              <span id="cart-count" aria-live="polite" class="cart-count">0</span>
             </a>
-
             <button
               type="button"
               class="nav-toggle"
@@ -81,16 +71,11 @@
               <i class="bx bx-menu"></i>
             </button>
           </div>
-
           <ul class="nav-menu" role="menu">
             <li><a href="#home" class="nav-link" role="menuitem">Home</a></li>
-            <li>
-              <a href="#produtos" class="nav-link" role="menuitem">Produtos</a>
-            </li>
+            <li><a href="#produtos" class="nav-link" role="menuitem">Produtos</a></li>
             <li><a href="#sobre" class="nav-link" role="menuitem">Sobre</a></li>
-            <li>
-              <a href="#contato" class="nav-link" role="menuitem">Contato</a>
-            </li>
+            <li><a href="#contato" class="nav-link" role="menuitem">Contato</a></li>
           </ul>
         </nav>
       </div>
@@ -141,8 +126,7 @@
       <section id="produtos" class="products" aria-label="Lista de produtos">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title gradient-text">Nossos Produtos
-</h2>
+            <h2 class="section-title gradient-text">Nossos Produtos</h2>
             <div class="filter-controls">
               <div class="filter-group">
                 <label for="sort-select" class="sr-only">Ordenar por</label>
@@ -151,7 +135,6 @@
                   class="filter-select"
                   aria-label="Ordenar produtos"
                 >
-                  <option value="default">Ordenar por</option>
                   <option value="price-asc">Preço: Menor para Maior</option>
                   <option value="price-desc">Preço: Maior para Menor</option>
                   <option value="name-asc">Nome: A-Z</option>
@@ -160,12 +143,10 @@
               </div>
             </div>
           </div>
-
           <div id="products-loading" class="loading-indicator">
             <div class="spinner"></div>
             <p>Carregando produtos...</p>
           </div>
-
           <div id="products-error" class="error-message" hidden>
             <i class="bx bx-error-circle"></i>
             <p>
@@ -175,11 +156,9 @@
               Tentar novamente
             </button>
           </div>
-
           <div class="products-grid" id="products-grid" aria-live="polite">
             <!-- Produtos inseridos via JavaScript -->
           </div>
-
           <div id="no-results" class="no-results" hidden>
             <p>Nenhum produto encontrado com os critérios selecionados.</p>
           </div>
@@ -290,6 +269,7 @@
       role="dialog"
       aria-labelledby="cart-modal-title"
       aria-hidden="true"
+      tabindex="0"
     >
       <div class="cart-modal-content">
         <div class="cart-modal-header">
@@ -302,7 +282,6 @@
             <i class="bx bx-x"></i>
           </button>
         </div>
-
         <div id="cart-empty" class="cart-empty">
           <i class="bx bx-cart"></i>
           <p>Seu carrinho está vazio</p>
@@ -310,11 +289,9 @@
             >Continuar comprando</a
           >
         </div>
-
         <div id="cart-items" class="cart-items" aria-live="polite">
           <!-- Itens do carrinho inseridos aqui -->
         </div>
-
         <div class="cart-summary">
           <div class="cart-total">
             <span>Total:</span>
@@ -344,6 +321,7 @@
       role="dialog"
       aria-labelledby="product-modal-title"
       aria-hidden="true"
+      tabindex="0"
     >
       <div class="product-modal-content">
         <button
