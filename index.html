@@ -384,6 +384,21 @@
       // Mover foco para o botão do carrinho
       const cartLink = document.querySelector(".cart-link")
       if (cartLink) cartLink.focus()
+
+      // Carregar produtos do arquivo JSON
+      async function loadProducts() {
+        try {
+          // Caminho relativo para GitHub Pages
+          const response = await fetch("src/data/products.json")
+          if (!response.ok) throw new Error("Erro ao carregar produtos")
+          this.products = await response.json()
+          this.filteredProducts = [...this.products]
+          this.renderProducts()
+          // ...restante do código...
+        } catch (error) {
+          // ...tratamento de erro...
+        }
+      }
     </script>
   </body>
 </html>
