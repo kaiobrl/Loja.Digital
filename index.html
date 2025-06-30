@@ -376,5 +376,14 @@
     ></div>
 
     <script src="./src/js/script.js" defer></script>
+    <script>
+      // Fechar modal do carrinho
+      const cartModal = document.getElementById("cart-modal")
+      cartModal.style.display = "none"
+      cartModal.setAttribute("aria-hidden", "true")
+      // Mover foco para o botão do carrinho
+      const cartLink = document.querySelector(".cart-link")
+      if (cartLink) cartLink.focus()
+    </script>
   </body>
 </html>

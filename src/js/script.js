@@ -438,8 +438,30 @@ class Shop {
       return
     }
 
+    // Solicitar dados do cliente
+    const nome = prompt("Informe seu nome completo:")
+    if (!nome) {
+      this.showNotification("Nome é obrigatório para finalizar a compra.", "error")
+      return
+    }
+
+    const telefone = prompt("Informe seu telefone para contato:")
+    if (!telefone) {
+      this.showNotification("Telefone é obrigatório para finalizar a compra.", "error")
+      return
+    }
+
+    const endereco = prompt("Informe seu endereço de entrega:")
+    if (!endereco) {
+      this.showNotification("Endereço é obrigatório para finalizar a compra.", "error")
+      return
+    }
+
     // Construir mensagem para WhatsApp
-    let message = "Olá, gostaria de finalizar minha compra:%0A%0A"
+    let message = `Olá, gostaria de finalizar minha compra:%0A%0A`
+    message += `*Nome:* ${encodeURIComponent(nome)}%0A`
+    message += `*Telefone:* ${encodeURIComponent(telefone)}%0A`
+    message += `*Endereço:* ${encodeURIComponent(endereco)}%0A%0A`
 
     this.cart.forEach((item) => {
       const itemTotal = item.price * item.quantity
@@ -451,7 +473,7 @@ class Shop {
     message += "Aguardo seu contato. Obrigado!"
 
     // Número de telefone
-    const phoneNumber = "5583987922753"
+    const phoneNumber = "5583981374944"
 
     // Construir URL do WhatsApp
     const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`
