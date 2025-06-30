@@ -764,3 +764,63 @@ document.addEventListener("DOMContentLoaded", () => {
   new Shop()
 })
 
+
+// Fechar modal do carrinho
+const cartModal = document.getElementById("cart-modal")
+cartModal.style.display = "none"
+cartModal.setAttribute("aria-hidden", "true")
+// Mover foco para o botão do carrinho
+const cartLink = document.querySelector(".cart-link")
+if (cartLink) cartLink.focus()
+
+// Carregar produtos do arquivo JSON
+async function loadProducts() {
+  try {
+    // Caminho relativo para GitHub Pages
+    const response = await fetch("src/data/products.json")
+    if (!response.ok) throw new Error("Erro ao carregar produtos")
+    this.products = await response.json()
+    this.filteredProducts = [...this.products]
+    this.renderProducts()
+    // ...restante do código...
+  } catch (error) {
+    // ...tratamento de erro...
+  }
+}
+function addToCart(productId) {
+  const product = products.find((p) => p.id === Number.parseInt(productId))
+
+  if (!product) {
+    showNotification("Produto não encontrado", "error")
+    return
+  }
+
+  // Verificar se o produto já está no carrinho
+  const cartItem = cart.find((item) => item.id === product.id)
+
+  if (cartItem) {
+    cartItem.quantity += 1
+    showNotification(`Quantidade de ${product.name} aumentada`, "success")
+  } else {
+    // Garante que price é número
+    cart.push({ ...product, price: Number(product.price), quantity: 1 })
+    showNotification(`${product.name} adicionado ao carrinho`, "success")
+  }
+
+  updateCartCount()
+  updateCartModal()
+}
+function loadFromLocalStorage() {
+  try {
+    const savedCart = localStorage.getItem("cart")
+    if (savedCart) {
+      cart = JSON.parse(savedCart).map(item => ({
+        ...item,
+        price: Number(item.price)
+      }))
+    }
+    // ...restante do código...
+  } catch (error) {
+    console.error("Erro ao carregar o carrinho do armazenamento local:", error)
+  }
+}
